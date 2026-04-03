@@ -1,0 +1,164 @@
+:root {
+  --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  
+  /* Light Mode Defaults */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f7;
+  --bg-glass: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-tertiary: #a1a1a6;
+  
+  --accent-color: #0071e3;
+  --accent-hover: #0077ed;
+  
+  --border-radius-lg: 18px;
+  --border-radius-md: 12px;
+  --border-radius-sm: 8px;
+  
+  --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-float: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #000000;
+    --bg-secondary: #1c1c1e;
+    --bg-glass: rgba(28, 28, 30, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    --text-primary: #f5f5f7;
+    --text-secondary: #86868b;
+    --text-tertiary: #6e6e73;
+    
+    --accent-color: #2997ff;
+    --accent-hover: #31a1ff;
+
+    --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-float: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-apple);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.47059;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: var(--font-apple);
+}
+
+/* Animations using non-linear spring-like functions */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* Utilities */
+.glass-panel {
+  background: var(--bg-glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: var(--shadow-glass);
+  padding: 2.5rem;
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  color: #ffffff;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 980px; /* pill shape */
+  font-size: 1.05rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+  background: var(--accent-hover);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  padding: 0.8rem 1.8rem;
+  border-radius: 980px;
+  font-size: 1.05rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background: var(--glass-border);
+}
+
+.btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.text-gradient {
+  /* Apple doesn't typically do extreme gradients, but a subtle iridescent one can work */
+  background: linear-gradient(135deg, #ff3b30, #ff9500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
